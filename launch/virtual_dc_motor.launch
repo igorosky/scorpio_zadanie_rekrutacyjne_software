@@ -1,0 +1,5 @@
+<launch>
+  <node name="virtual_dc_motor" pkg="virtual_dc_motor" type="virtual_dc_motor" output="log" respawn="true"></node>
+  <node name="rpm" pkg="virtual_dc_motor" type="rpm"></node>
+  <node name="speed_controller" pkg="virtual_dc_motor" type="speed_controller"></node>
+</launch>
