@@ -1,12 +1,10 @@
 // #define AVERAGE //Doesnt work well with PID
 #define LOGGING
 
-// Topic names
-#define SPEED_TOPIC "/virtual_dc_motor_driver/get_velocity"
-
 #include <ros/ros.h>
 #include <std_msgs/UInt16.h>
 #include <std_msgs/Float32.h>
+#include "topics.h"
 
 #define RANGE 4096
 
@@ -72,8 +70,8 @@ void callback(const std_msgs::UInt16 val) {
 int main(int argc, char **argv) {
     ros::init(argc, argv, "rpm");
     ros::NodeHandle nh;
-    pub = nh.advertise<std_msgs::Float32>(SPEED_TOPIC, 0);
-    ros::Subscriber subscriber = nh.subscribe("/virtual_dc_motor/get_position", 0, callback);
+    pub = nh.advertise<std_msgs::Float32>(SPEED_TOPIC, 1);
+    ros::Subscriber subscriber = nh.subscribe(POSITION_TOPIC, 2, callback);
     ros::spin();
     return 0;
 }

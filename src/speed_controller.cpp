@@ -6,15 +6,11 @@
 #define INTEGRAL_FACTOR 0.11
 #define DIFFERENTIATION_FACTOR 0.005
 
-// Topic names
-#define CS_TOPIC "/virtual_dc_motor/set_cs"
-#define REQUIRED_SPEED_TOPIC "/virtual_dc_motor_controller/set_velocity_goal"
-#define SPEED_TOPIC "/virtual_dc_motor_driver/get_velocity"
-
 #include <ros/ros.h>
 #include <std_msgs/Int8.h>
 #include <std_msgs/Float32.h>
 #include "pid.hpp"
+#include "topics.h"
 
 #ifdef USE_PREDEFINED
 #define PREDEFINED_ARRAY_LENGTH 71

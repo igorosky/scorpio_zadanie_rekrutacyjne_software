@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <std_msgs/Int8.h>
 #include <std_msgs/Float32.h>
+#include "topics.h"
 
 const int SAMPLES = 1000;
 const int beg = 0;
@@ -53,9 +54,9 @@ int main(int argc, char **argv) {
     ans = new double[end - beg];
     ros::init(argc, argv, "speed_data_collector");
     ros::NodeHandle nh;
-    pub = nh.advertise<std_msgs::Int8>("/virtual_dc_motor/set_cs", 1);
+    pub = nh.advertise<std_msgs::Int8>(CS_TOPIC, 1);
     changeSpeed(beg);
-    ros::Subscriber subscriber = nh.subscribe("/virtual_dc_motor_driver/get_velocity", 0, callback);
+    ros::Subscriber subscriber = nh.subscribe(SPEED_TOPIC, 0, callback);
     ros::spin();
     return 0;
 }

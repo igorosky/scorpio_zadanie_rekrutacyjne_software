@@ -11,6 +11,7 @@ catkin_package()
 
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  include
   include/virtual_dc_motor
   include/speed_controller
 )
